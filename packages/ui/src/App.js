@@ -37,36 +37,36 @@ function App() {
         isLoading ? (<Spinner animation="border" />)
         : (
           <>
-  <Row>
-    <Col><h1>Accout</h1></Col>
-    <Col style={{display: 'flex',justifyContent:'flex-end'}}>Total: ${total}</Col>
-    </Row>
-    <Row>
-    <Col>
-      <Accordion defaultActiveKey="0">
-        {
-          history.map((transaction, index) => (
-            <Card>
-              <Accordion.Toggle as={Card.Header} eventKey={`${index}`} style={{ backgroundColor: transaction.status === 'SUCCESS' ? 'white' : 'lightred', display: 'flex', justifyContent:'space-between'}}>
-                <span>{transaction.type}</span><span>$ {transaction.ammount.toFixed(2)}</span>
-              </Accordion.Toggle>
-              <Accordion.Collapse eventKey={`${index}`}>
-                <Card.Body style={{display: 'flex', flexDirection:'column'}}>
-                  <span>Description: {transaction.description}</span>
-                  <span>Date: {new Date(transaction.time).toLocaleString()}</span>
-                  <span>Status: {transaction.status}</span>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          ))
-        }
-</Accordion>
-    </Col>
-    </Row>
+            <Row>
+            <Col><h1>Accout</h1></Col>
+            <Col style={{display: 'flex',justifyContent:'flex-end'}}>Total: ${total}</Col>
+            </Row>
+            <Row>
+              <Col>
+                <Accordion defaultActiveKey="0">
+                  {
+                    history.map((transaction, index) => (
+                      <Card>
+                        <Accordion.Toggle as={Card.Header} eventKey={`${index}`} style={{ backgroundColor: transaction.status === 'SUCCESS' ? 'white' : 'lightred', display: 'flex', justifyContent:'space-between'}}>
+                          <span>{transaction.type}</span><span>$ {transaction.ammount.toFixed(2)}</span>
+                        </Accordion.Toggle>
+                        <Accordion.Collapse eventKey={`${index}`}>
+                          <Card.Body style={{display: 'flex', flexDirection:'column'}}>
+                            <span>Description: {transaction.description}</span>
+                            <span>Date: {new Date(transaction.time).toLocaleString()}</span>
+                            <span>Status: {transaction.status}</span>
+                          </Card.Body>
+                        </Accordion.Collapse>
+                      </Card>
+                    ))
+                  }
+                </Accordion>
+              </Col>
+            </Row>
           </>
         )
       }
-</Container>
+    </Container>
   );
 }
 
