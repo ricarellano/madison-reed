@@ -1,6 +1,7 @@
-var model = require('../model/transactions')
-var AsyncLock = require('async-lock');
-var lock = new AsyncLock();
+const model = require('../model/transactions')
+const AsyncLock = require('async-lock');
+const lock = new AsyncLock();
+
 
 const createTransaction = (ammount, type, description) => {
   const time = new Date().getTime()
@@ -16,7 +17,7 @@ exports.getTransactions = (req, res) => {
   lock.acquire("key", function(done) {done()},
     function(err, ret) {
      const { total, history} = model.getAccount()
-     res.send({ total, history})
+     res.status(200).send({ total, history})
     }, {});
 }
 
@@ -28,18 +29,18 @@ exports.addDebit = (req, res) => {
     const { total } = model.getAccount()
     const newTotal = total - transaction.ammount
     if(newTotal >= 0) {
-      transaction.status = 'SUCCESS'
+      transaction.status = model.SUCCESS
       model.saveTransaction(newTotal, transaction)
     } else {
-      transaction.status = 'FAILED'
+      transaction.status = model.FAILED
       model.saveTransaction(total, transaction)
     }
     done()
   }, function(err, ret) {
-    if(transaction.status === 'SUCCESS')
-      res.send('TransactionCreated')
+    if(transaction.status === model.SUCCESS)
+      res.status(201).send('Transaction created')
     else 
-      res.send('Transaction failed')
+      res.status(406).send(`Selected account doesn't have the required funds`)
     }, {});
 }
 
@@ -50,13 +51,13 @@ exports.addCredit = (req, res) => {
   lock.acquire("key", function(done) {
     const { total } = model.getAccount()
     const newTotal = total + transaction.ammount
-    transaction.status = 'SUCCESS'
+    transaction.status = model.SUCCESS
     model.saveTransaction(newTotal, transaction)
     done()
   }, function(err, ret) {
-    if(transaction.status === 'SUCCESS')
-      res.send('TransactionCreated')
+    if(transaction.status === model.SUCCESS)
+      res.status(201).send('Transaction created')
     else 
-      res.send('Transaction failed')
+      res.status(406).send(`Selected account does'nt have the required funds`)
     }, {});
 }

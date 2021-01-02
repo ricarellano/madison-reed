@@ -9,6 +9,8 @@ const account = {
 
 exports.DEBIT_TYPE = 'debit'
 exports.CREDIT_TYPE = 'credit'
+exports.SUCCESS = 'SUCCESS'
+exports.FAILED = 'FAILED'
 
 
 
