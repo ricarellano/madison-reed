@@ -54,6 +54,7 @@ function App() {
                 <Card.Body style={{display: 'flex', flexDirection:'column'}}>
                   <span>Description: {transaction.description}</span>
                   <span>Date: {new Date(transaction.time).toLocaleString()}</span>
+                  <span>Status: {transaction.status}</span>
                 </Card.Body>
               </Accordion.Collapse>
             </Card>

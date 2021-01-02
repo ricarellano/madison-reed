@@ -48,7 +48,7 @@ exports.addDebit = (req, res) => {
 exports.addCredit = (req, res) => {
   const { body } = req
   const { ammount, description } = body
-  const transaction = createTransaction(ammount, model.DEBIT_TYPE, description)
+  const transaction = createTransaction(ammount, model.CREDIT_TYPE, description)
   lock.acquire("key", function(done) {
     const { total } = model.getAccount()
     const newTotal = total + transaction.ammount
