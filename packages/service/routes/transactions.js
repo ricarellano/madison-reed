@@ -1,17 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var transactionsController = require('../controllers/transactions')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', transactionsController.getTransactions);
 
-router.post('/debit', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('/debit', transactionsController.addDebit);
 
-router.post('/credit', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('/credit', transactionsController.addCredit);
 
 module.exports = router;
