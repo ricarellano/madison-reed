@@ -12,27 +12,13 @@ exports.CREDIT_TYPE = 'credit'
 
 
 
-exports.getHistory = () => {
-  const { total, history } = account
-  return {
-    total,
-    history
-  }
+exports.getAccount = () => {
+  return account
 }
 
-exports.addTransaction = (transaction) => {
-  let newTotal = account.total
-  if(transaction.type === this.DEBIT_TYPE) {
-    newTotal -= transaction.ammount
-  } else {
-    newTotal += transaction.ammount
-  }
-  if(newTotal >= 0) {
-    account.total = newTotal
-    transaction.status = 'SUCCESS'
-  } else {
-    transaction.status = 'FAILED'
-  }
+exports.saveTransaction = (total, transaction) => {
+  account.total = total
   account.history.push(transaction)
-  return transaction.status === 'SUCCESS'
+
+  return account
 }
