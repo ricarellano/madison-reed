@@ -13,7 +13,11 @@ exports.CREDIT_TYPE = 'credit'
 
 
 exports.getHistory = () => {
-  return account
+  const { total, history } = account
+  return {
+    total,
+    history
+  }
 }
 
 exports.addTransaction = (transaction) => {
