@@ -14,6 +14,6 @@ router.get('/', transactionsController.getTransactions);
 
 router.post('/debit', validator.body(bodySchema), transactionsController.addDebit);
 
-router.post('/credit', transactionsController.addCredit);
+router.post('/credit', validator.body(bodySchema), transactionsController.addCredit);
 
 module.exports = router;

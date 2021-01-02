@@ -17,6 +17,7 @@ exports.getTransactions = (req, res) => {
   lock.acquire("key", function(done) {done()},
     function(err, ret) {
      const { total, history} = model.getAccount()
+      res.setHeader('Content-Type', 'application/json');
      res.status(200).send({ total, history})
     }, {});
 }

@@ -1,0 +1,15 @@
+const request = require('supertest');
+const express = require('express');
+const app = require('../../app')
+ 
+// const app = express();
+
+describe('GET /transactions', () => {
+
+  test('return current history', (done) => {
+  request(app)
+    .get('/transactions')
+    .expect('Content-Type', /json/)
+    .expect(200, done);
+  })
+});
