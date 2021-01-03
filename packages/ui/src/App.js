@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Spinner, Col, Row, Accordion, Card, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios'
 
 const URL = 'http://localhost:4000/transactions'
 
@@ -14,9 +15,9 @@ function App() {
   useEffect(() => {
     setLoading(true)
     const fetchData = async () => {
-      const response = await window.fetch(URL)
+      const response = await axios.get(URL)
       if(response.status === 200) {
-        const body = await response.json()
+        const body = response.data
         if(!isNaN(body.total)){
           setTotal(body.total.toFixed(2))
         }
@@ -26,7 +27,6 @@ function App() {
         setLoading(false)
       }
     }
-
     fetchData()
   }, [])
 
@@ -34,19 +34,19 @@ function App() {
   return (
     <Container style={{margin: '2rem'}}>
       {
-        isLoading ? (<Spinner animation="border" />)
+        isLoading ? (<Spinner data-testid="spinner" animation="border" />)
         : (
           <>
             <Row>
-            <Col><h1>Accout</h1></Col>
+            <Col><h1>Account</h1></Col>
             <Col style={{display: 'flex',justifyContent:'flex-end'}}>Total: ${total}</Col>
             </Row>
             <Row>
               <Col>
-                <Accordion defaultActiveKey="0">
+                <Accordion defaultActiveKey="0" as="ul">
                   {
                     history.map((transaction, index) => (
-                      <Card>
+                      <Card key={index} as="li">
                         <Accordion.Toggle as={Card.Header} eventKey={`${index}`} style={{ backgroundColor: transaction.status === 'SUCCESS' ? 'white' : 'lightred', display: 'flex', justifyContent:'space-between'}}>
                           <span>{transaction.type}</span><span>$ {transaction.ammount.toFixed(2)}</span>
                         </Accordion.Toggle>
