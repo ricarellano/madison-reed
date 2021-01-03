@@ -11,5 +11,10 @@ and then to run all the project
 ```
 npx lerna run start
 ```
-each project has his own test and also you can find a postman collection on the
+each project has his own test you can run in each package
+```
+yarn test
+```
+
+and also you can find a postman collection on the
 root of the repo to add transactions
