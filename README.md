@@ -18,3 +18,12 @@ yarn test
 
 and also you can find a postman collection on the
 root of the repo to add transactions
+
+
+## integration tests
+
+this tests are in the UI package to run them locate in the package and run
+
+```
+yarn run cypress open
+```
