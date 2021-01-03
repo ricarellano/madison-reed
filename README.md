@@ -5,7 +5,7 @@ bootstrapped app and ui package was made with create-react-app
 
 to run the application please install all the dependencies using 
 ``` 
-yarn install
+npx lerna bootstrap
 ```
 and then to run all the project
 ```
