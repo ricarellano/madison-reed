@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "f26577c7-7ab1-420b-be13-d792263e2d9b",
+		"name": "Madisson-reed-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add debit transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ammount\": 100,\n    \"description\": \"Netflix payment\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/transactions/debit",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"transactions",
+						"debit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add credit transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ammount\": 100,\n    \"description\": \" happy birthday\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/transactions/credit",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"transactions",
+						"credit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get transactions history",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4000/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

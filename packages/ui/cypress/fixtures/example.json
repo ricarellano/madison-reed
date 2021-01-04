@@ -1,0 +1,14 @@
+{
+  "total": 200,
+  "history": [
+    {
+      "ammount": 10, "type": "debit", "status": "FAILED", "description": "Netflix", "time":1609628555812
+    }, {
+      "ammount": 10, "type": "debit", "status": "SUCCESS", "description": "Happy Birthday", "time":1609628555812
+    }, {
+      "ammount": 100, "type": "debit", "status": "SUCCESS", "description": "some description", "time":1609628555812
+    }, {
+      "ammount": 1000, "type": "credit", "status": "SUCCESS", "description": "some description", "time":1609628555812
+    }
+  ]
+}
